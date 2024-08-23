@@ -10,7 +10,7 @@
     <button type="submit">Mostrar Registro</button>
 </form>
 
-@if(isset($registros)&&count($registros)>0)
+@if(isset($registros) && count($registros) > 0)
     <h3>Datos almacenados</h3>
     <table border="1">
         <thead>
@@ -18,14 +18,22 @@
                 <th>Nombre</th>
                 <th>Telefono</th>
                 <th>DNI</th>
+                <th>Acciones</th> 
             </tr>
         </thead>
         <tbody>
-            @foreach($registros as $registro)
+            @foreach($registros as $indice => $registro) 
                 <tr>
-                    <td>{{$registro['name']}}</td>
-                    <td>{{$registro['telefono']}}</td>
-                    <td>{{$registro['dni']}}</td>
+                    <td>{{ $registro['name'] }}</td>
+                    <td>{{ $registro['telefono'] }}</td>
+                    <td>{{ $registro['dni'] }}</td>
+                    <td>
+                        <form action="{{ route('registro.eliminar', ['indice' => $indice]) }}" method="POST">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger">Borrar</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>

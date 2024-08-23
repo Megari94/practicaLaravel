@@ -9,3 +9,4 @@ Route::get('/', function () {
 
 Route::get('/registro', [App\Http\Controllers\RegistroController::class, 'showForm'])->name('registro.show');
 Route::post('/registro', [App\Http\Controllers\RegistroController::class, 'registro'])->name('registro.result');
+Route::delete('/registro/{indice}', [RegistroController::class, 'eliminarRegistro'])->name('registro.eliminar');

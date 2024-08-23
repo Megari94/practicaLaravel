@@ -35,4 +35,15 @@ class RegistroController extends Controller
 
         return redirect()->route('registro.show');
     }
+    public function eliminarRegistro(Request $request, $indice)
+    {
+    $registros = session('registros', []);
+
+    if (isset($registros[$indice])) {
+        unset($registros[$indice]); // Elimina el registro
+        session(['registros' => $registros]); // Actualiza la sesión
+    }
+
+    return redirect()->route('registro.show'); 
+    }
 }
