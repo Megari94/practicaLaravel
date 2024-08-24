@@ -1,3 +1,8 @@
+<link rel="stylesheet" href="{{ asset('css/custom.css') }}">
+<!-- Custom Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
 <form action="{{ route('registro.result') }}" method="POST">
     @csrf
     <label for="name">Nombre</label>
@@ -9,6 +14,7 @@
 
     <button type="submit">Mostrar Registro</button>
 </form>
+
 
 @if(isset($registros) && count($registros) > 0)
     <h3>Datos almacenados</h3>
